@@ -39,33 +39,33 @@ def make_drink(preferences):
 
 
 def print_recipe(drink):
-    pass
-    # return desc
+    print("Just for you a special drink with:")
+    for ingredient in drink:
+        print(ingredient)
 
-def name_drink(drink):
-    adjectives = ingredients.keys()
-    adjective = random.choice(adjectives) 
-    pass
-    # return string with name
+def name_drink():
+    adjective = random.choice(list(ingredients.keys())) 
+    noun = random.choice(["Sea-Dog", "Gorilla", "Chinchilla", "Baboon"])
+    print("This is a drink I have named '{} {}'".format(adjective.capitalize(), noun))
 
 def tell_drink(drink):
     print_recipe(drink)
-    name_drink(drink)
+    name_drink()
   
 
-# TO DO function to print recipes &
-# TO DO give drink a name
 # Extension exercises??
 
 def carry_on():
-    return False
+    answer = input("You like it? Can I make you another drink? (y/n): ")
+    if answer.lower().strip() != "y":
+        return False
 
-if __name__ == "__main__":    
+if __name__ == "__main__": 
+    print("Welcome to my bar! I'll make you a drink!")
     another_one = True
     while another_one:
         preferences = ask_for_preferences()
         drink = make_drink(preferences)
         tell_drink(drink) 
-        #function to print answer
         another_one = carry_on()
     
