@@ -64,10 +64,10 @@ def carry_on():
     if answer.lower().strip() not in ["y", "yes"]:
         print("No? Okay, see you around :-)\n")
         return False
+    else:
+        return True
 
-# TODO: Extension exercises
-
-if __name__ == "__main__": 
+def main():
     print("\nWelcome to my bar! I'll make you a drink!\n")
     another_one = True
     while another_one:
@@ -75,4 +75,10 @@ if __name__ == "__main__":
         drink = make_drink(preferences)
         tell_drink(drink) 
         another_one = carry_on()
+
+# TODO: Extension exercises
+
+if __name__ == "__main__": 
+    main()
+
     
