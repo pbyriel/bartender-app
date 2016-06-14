@@ -23,7 +23,7 @@ def ask_for_preferences():
     preferences = {}
     for question in questions:
         answer = input(questions[question] + " (y/n): ")
-        if answer.lower().strip() == "y": 
+        if answer.lower().strip() in ["y", "yes"]: 
             preferences[question] = True
         else:
             preferences[question] = False
@@ -61,7 +61,8 @@ def tell_drink(drink):
 
 def carry_on():
     answer = input("You like it? Can I make you another drink? (y/n): ")
-    if answer.lower().strip() != "y":
+    if answer.lower().strip() not in ["y", "yes"]:
+        print("No? Okay, see you around :-)\n")
         return False
 
 # TODO: Extension exercises
