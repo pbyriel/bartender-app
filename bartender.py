@@ -1,6 +1,6 @@
 #python3
 
-import random
+import random, sys
 
 questions = {
     "strong": "Do ye like yer drinks strong?",
@@ -29,39 +29,45 @@ def ask_for_preferences():
             preferences[question] = False
     return preferences
 
+
 def make_drink(preferences):
     drink = []
     for type, liked in preferences.items():
         if liked:
             ingredient = random.choice(ingredients[type])
             drink.append(ingredient)
+    if not len(drink):
+        print("\nI cannot make drink with no ingredients.\nGet out!\n")
+        sys.exit()
     return drink
 
 
 def print_recipe(drink):
-    print("Just for you a special drink with:")
+    print("\nJust for you a special drink with a:")
     for ingredient in drink:
         print(ingredient)
+        
 
 def name_drink():
     adjective = random.choice(list(ingredients.keys())) 
     noun = random.choice(["Sea-Dog", "Gorilla", "Chinchilla", "Baboon"])
-    print("This is a drink I have named '{} {}'".format(adjective.capitalize(), noun))
+    print("This drink I'll name '{} {}'\n".format(adjective.capitalize(), noun))
 
+    
 def tell_drink(drink):
     print_recipe(drink)
     name_drink()
   
-
-# Extension exercises??
 
 def carry_on():
     answer = input("You like it? Can I make you another drink? (y/n): ")
     if answer.lower().strip() != "y":
         return False
 
+# TODO: Extension exercises
+
 if __name__ == "__main__": 
-    print("Welcome to my bar! I'll make you a drink!")
+    print("\nWelcome to my bar! I'll make you a drink!\n")
     another_one = True
     while another_one:
         preferences = ask_for_preferences()
