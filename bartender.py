@@ -18,6 +18,11 @@ ingredients = {
     "fruity": ["slice of orange", "dash of cassis", "cherry on top"],
 }
 
+def introduction():
+    print("\nWelcome to my bar! I'll make you a drink!\n")
+    name = input("So what's your name again? ")
+    print("Hello {}, good to see you".format(name))
+    return name
 
 def ask_for_preferences():
     preferences = {}
@@ -66,17 +71,30 @@ def carry_on():
         return False
     else:
         return True
+        
+def serve_other():
+        others = input("Anyone else want a drink? (y/n): ")
+        if others.lower().strip() not in ["y", "yes"]:
+            return False
+        else:
+            return True
 
 def main():
-    print("\nWelcome to my bar! I'll make you a drink!\n")
-    another_one = True
-    while another_one:
-        preferences = ask_for_preferences()
-        drink = make_drink(preferences)
-        tell_drink(drink) 
-        another_one = carry_on()
-
-# TODO: Extension exercises
+    serving = True
+    while serving:
+        #TODO customers should be a dict, storing key name + value drink
+        customers = []
+        name = introduction()
+        customers.append(name)
+        another_one = True
+        #TODO should take into account if customer wants same drink 
+        while another_one:
+            preferences = ask_for_preferences()
+            drink = make_drink(preferences)
+            tell_drink(drink) 
+            another_one = carry_on()
+        serving = serve_other()
+    
 
 if __name__ == "__main__": 
     main()
